@@ -9,7 +9,8 @@ router.use(function timeLog(req, res, next) {
 
 // define the home page route
 router.get('/', function (req, res) {
-    res.send('Home Page111!');
+    // res.send('Home Page111!');
+    res.sendfile('./public/index.html');
 });
 // define the about route
 router.get('/about', function (req, res) {
