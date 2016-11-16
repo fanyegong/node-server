@@ -11,5 +11,8 @@
     "server"
   ],
   "author": "CPC",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "express": "^4.14.0"
+  }
 }
