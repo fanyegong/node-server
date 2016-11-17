@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 
+// MongoDB
+require('./models/db.js');
+
 // Routing
 var indexRoute = require('./routes/index.js');
 var userRoute = require('./routes/user.js');
