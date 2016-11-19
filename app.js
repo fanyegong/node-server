@@ -1,11 +1,14 @@
 var fs = require('fs');
 var http = require('http');
-var https = require('https');
+var http2 = require('http2');
 var privateKey = fs.readFileSync('sslcert/2_www.cpcwe.com.key', 'utf8');
 var certificate = fs.readFileSync('sslcert/1_www.cpcwe.com_bundle.crt', 'utf8');
 var credentials = {key: privateKey, cert: certificate};
 
 var express = require('express');
+// refer: https://github.com/expressjs/express/issues/2761 tunniclm's idea
+express.request.__proto__ = http2.IncomingMessage.prototype;
+express.response.__proto__ = http2.ServerResponse.prototype;
 var app = express();
 
 // MongoDB
@@ -24,8 +27,9 @@ app.use(express.static('public'));
 //app.listen(3000, function () {
 //    console.log('Example app listening on port 3000!');
 //});
+
 var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
+var http2Server = http2.createServer(credentials, app);
 httpServer.listen(80);
-httpsServer.listen(443);
+http2Server.listen(443);
 

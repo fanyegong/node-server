@@ -17,6 +17,7 @@
   "devDependencies": {},
   "dependencies": {
     "express": "^4.14.0",
+    "http2": "^3.3.6",
     "mongodb": "^2.2.11"
   }
 }
