@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
+    "forever": "forever start -l forever.log -o out.log -e err.log  -a app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "https://github.com/fanyegong/node-server.git",

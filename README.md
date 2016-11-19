@@ -12,3 +12,9 @@ npm install
 npm start
 ```
 
+## start server by forever
+
+```
+npm run forever
+```
+
