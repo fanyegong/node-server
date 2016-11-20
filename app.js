@@ -20,7 +20,18 @@ app.use('/', indexRoute);
 app.use('/user', userRoute);
 
 // Serving static files
-app.use(express.static('public'));
+var options = {
+    dotfiles: 'ignore',
+    etag: false,
+    extensions: ['js', 'css'],
+    index: false,
+    maxAge: '1d',
+    redirect: false,
+    setHeaders: function (res, path, stat) {
+        res.set('x-timestamp', Date.now());
+    }
+};
+app.use(express.static('public', options));
 
 // Starting server
 //app.listen(3000, function () {
