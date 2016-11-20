@@ -1,5 +1,4 @@
 var fs = require('fs');
-var http = require('http');
 var http2 = require('http2');
 var privateKey = fs.readFileSync('sslcert/2_www.cpcwe.com.key', 'utf8');
 var certificate = fs.readFileSync('sslcert/1_www.cpcwe.com_bundle.crt', 'utf8');
@@ -28,8 +27,6 @@ app.use(express.static('public'));
 //    console.log('Example app listening on port 3000!');
 //});
 
-var httpServer = http.createServer(app);
 var http2Server = http2.createServer(credentials, app);
-httpServer.listen(80);
 http2Server.listen(443);
 
